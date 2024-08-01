@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vought Studios - Production Details</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .production-details {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .production-details img {
+            width: 50%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .production-details h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .production-details p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #1a365d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Vought Studios</div>
+            <div class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#productions">Productions</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="production-details">
+        <a href="index.html#productions" class="back-link">← Back to All Productions</a>
+        <h1 id="production-title"></h1>
+        <p id="production-description"></p>
+        <img id="production-image" src="" alt="">
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Vought Studios. All rights reserved.</p>
+        <p>Heroes are a registered trademark of Vought International.</p>
+    </footer>
+
+    <script>
+        const productionDetails = {
+            "Dawn of the seven" : {
+                image : "dawn_of_seven.webp",
+                description : "The blockbuster movie event of the year, bringing together Earth's mightiest heroes."
+            },
+            "Payback": {
+                image: "payback.webp",
+                description: "Experience the thrilling adventures of Vought's elite superhero team as they navigate global threats and personal rivalries. Payback delivers hard-hitting action with a side of dark humor. Watch as these complex heroes grapple with their powers, fame, and the weight of public expectations in a world that's not as black and white as it seems."
+            },
+            "Ghosts of Hanoi": {
+                image: "Ghosts of hanoi.jpeg",
+                description: "This gripping miniseries follows a covert team of supes on a classified mission during the Vietnam War. Uncover the hidden history of heroism and moral ambiguity in this critically acclaimed drama. 'Ghosts of Hanoi' explores the psychological toll of war on even the most powerful individuals, blending superhero action with intense character studies and historical intrigue."
+            },
+            "Phase 7": {
+                image: "phase7.avif",
+                description: "Prepare for the next evolution of superhero entertainment. Phase 7 will introduce a new generation of supes, expanding the Vought universe with interconnected stories across multiple platforms. The future of heroism begins here. This ambitious project will delve deeper into the complexities of a world where superheroes are both celebrities and weapons, exploring themes of power, responsibility, and the human condition."
+            },
+            "Supes and Milk" : {
+                image : "Supes and milk.jpeg",
+                description : "Dive deep into the psyche of America's most powerful and complex superhero in this groundbreaking psychological thriller."
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const production = urlParams.get('production');
+
+            if (production && productionDetails[production]) {
+                const details = productionDetails[production];
+                document.title = `Vought Studios - ${production}`;
+                document.getElementById('production-image').src = details.image;
+                document.getElementById('production-image').alt = production;
+                document.getElementById('production-title').textContent = production;
+                document.getElementById('production-description').textContent = details.description;
+            } else {
+                document.getElementById('production-title').textContent = "Production Not Found";
+                document.getElementById('production-description').textContent = "Sorry, we couldn't find information about this production.";
+            }
+        });
+    </script>
+</body>
+</html>
